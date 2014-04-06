@@ -60,12 +60,8 @@ public class MyArrayList<E> {
 	 * @param elem
 	 */
 	public void add(E elem) {
-        if(currentSize >= elements.length){ //If the array is full...
-            expandSize(); //expand the array...
-        }
 
-        elements[currentSize] = elem; //Takes in the new elem
-        currentSize++;
+
 	}
 
 
@@ -81,16 +77,7 @@ public class MyArrayList<E> {
 	 * @param elem
 	 */
 	public void add(int index, E elem) {
-        if (currentSize >= elements.length){ // If the array is full...
-            expandSize();
-        }
 
-        for (int i=currentSize; i > index; i--){
-            elements[i] = elements[i -1];
-        }
-
-        elements[index] = elem;
-        currentSize++;
 	}
 	
 	/**
@@ -102,13 +89,7 @@ public class MyArrayList<E> {
      * Hint: use newArrayOfE!
 	 */
 	private void expandSize() {
-        E[] temp = newArrayOfE(currentSize * 2); // Doubles the size of the array
-        for (int i=0; i < elements.length;i++){
 
-            temp[i] = elements[i]; //Copies the old elements into the new array
-        }
-
-        elements = temp;
 	}
 	
 	/**
