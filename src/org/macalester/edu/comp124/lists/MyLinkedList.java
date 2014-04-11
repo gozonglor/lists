@@ -44,16 +44,12 @@ public class MyLinkedList<E> {
     public void add(E elem) {
         MyLinkedNode<E> NewNode = new MyLinkedNode(elem);
         MyLinkedNode<E> OldNode = tail.getPrev();
-        if (size() == 0){
-        tail.setPrev(NewNode);
-        head.setNext(NewNode);
-        }
 
-        else {
             OldNode.setNext(NewNode);
             tail.setPrev(NewNode);
+            NewNode.setPrev(OldNode);
+            NewNode.setNext(tail);
 
-        }
         numElements++; //Iterates num elements -- grows the list
         //If there are only two items ^
     }
@@ -67,20 +63,17 @@ public class MyLinkedList<E> {
         MyLinkedNode<E> newNode = new MyLinkedNode<E>(elem);
         MyLinkedNode<E> oldNode = head.getNext();
 
-        for (int n=0; n < i-1; n++){
+        for (int n=0; n < i-1; n++){ //oldNode is 0 position
             oldNode = oldNode.getNext();
         }
 
         newNode.setNext(oldNode.getNext());
         newNode.setPrev(oldNode);
         oldNode.setNext(newNode);
-
-
         oldNode.setNext(newNode);
 
         numElements ++;
 	}
-
     /**
      * Returns the current size of the list.
      * @return
